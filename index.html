@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>jangbudiFarm - katalog Kambing</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f8f6ef;
+      color: #2d2d2d;
+    }
+
+    header {
+      background: #2f5d3a;
+      color: white;
+      padding: 16px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.18);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #ffd166;
+    }
+
+    nav {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 20px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background: #ffd166;
+      color: #2f5d3a;
+    }
+
+    .hero {
+      min-height: calc(100vh - 80px);
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url("assets/3.jpeg");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      padding: 40px 7%;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 700px;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: none;
+      background: #ffd166;
+      color: #24472c;
+      padding: 12px 22px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.3s;
+      font-size: 15px;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      background: white;
+    }
+
+    .btn-green {
+      background: #2f5d3a;
+      color: white;
+    }
+
+    .btn-green:hover {
+      background: #24472c;
+      color: white;
+    }
+
+    .btn-light {
+      background: white;
+      color: #2f5d3a;
+    }
+
+    section {
+      padding: 70px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+      font-size: 34px;
+      color: #2f5d3a;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: #666;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 100px;
+      position: relative;
+      z-index: 10;
+      padding: 0 7%;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
+    .stat-card h3 {
+      font-size: 34px;
+      color: #2f5d3a;
+      margin-bottom: 5px;
+    }
+
+    .about {
+      background: #fff;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .about-grid img {
+      width: 100%;
+      height: 390px;
+      object-fit: cover;
+      border-radius: 22px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
+    .about-text h3 {
+      color: #2f5d3a;
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .about-text p {
+      margin-bottom: 13px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .feature-card {
+      background: #f8f6ef;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .feature-card h4 {
+      color: #2f5d3a;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      text-align: left;
+      line-height: 1.4;
+      word-spacing: normal;
+      letter-spacing: normal;
+    }
+
+    .catalog {
+      background: #f8f6ef;
+    }
+
+    .filter-box {
+      background: white;
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 5px 16px rgba(0,0,0,0.1);
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      border: 2px solid #2f5d3a;
+      background: white;
+      color: #2f5d3a;
+      padding: 10px 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: #2f5d3a;
+      color: white;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      transition: 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .badge {
+      background: #e8f5e9;
+      color: #2f5d3a;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .product-info h3 {
+      color: #24472c;
+      margin-bottom: 8px;
+    }
+
+    .product-info p {
+      color: #555;
+      margin-bottom: 7px;
+      font-size: 14px;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      color: #2f5d3a;
+      margin: 12px 0;
+    }
+
+    .calculator {
+      background: white;
+    }
+
+    .calc-box {
+      max-width: 900px;
+      margin: auto;
+      background: #f8f6ef;
+      border-radius: 22px;
+      padding: 30px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .input-group {
+      margin-bottom: 16px;
+    }
+
+    .input-group label {
+      display: block;
+      font-weight: bold;
+      color: #2f5d3a;
+      margin-bottom: 6px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #2f5d3a;
+    }
+
+    .calc-result {
+      background: white;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+
+    .calc-result h3 {
+      color: #2f5d3a;
+      margin-bottom: 14px;
+    }
+
+    .calc-result .total {
+      font-size: 32px;
+      color: #2f5d3a;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    .cart {
+      background: #f8f6ef;
+    }
+
+    .cart-box {
+      background: white;
+      border-radius: 22px;
+      padding: 25px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid #eee;
+      align-items: center;
+    }
+
+    .cart-item strong {
+      color: #2f5d3a;
+    }
+
+    .remove-btn {
+      background: #d62828;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .cart-total {
+      text-align: right;
+      margin-top: 18px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #2f5d3a;
+    }
+
+    .order-form {
+      margin-top: 25px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .order-form textarea {
+      grid-column: span 2;
+      height: 100px;
+      resize: none;
+    }
+
+    .order-form button {
+      grid-column: span 2;
+    }
+
+    .gallery {
+      background: white;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      border-radius: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.04);
+    }
+
+    .testimoni {
+      background: #f8f6ef;
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .testi-card {
+      background: white;
+      padding: 24px;
+      border-radius: 18px;
+      box-shadow: 0 5px 16px rgba(0,0,0,0.1);
+    }
+
+    .testi-card h4 {
+      color: #2f5d3a;
+      margin-bottom: 8px;
+    }
+
+    .stars {
+      color: #f4a261;
+      margin-bottom: 10px;
+    }
+
+    .contact {
+      background: #2f5d3a;
+      color: white;
+      text-align: center;
+    }
+
+    .contact .section-title h2,
+    .contact .section-title p {
+      color: white;
+    }
+
+    .contact-box {
+      max-width: 750px;
+      margin: auto;
+      background: rgba(255,255,255,0.12);
+      padding: 30px;
+      border-radius: 22px;
+    }
+
+    .contact-box p {
+      margin-bottom: 12px;
+    }
+
+    footer {
+      background: #1f3d26;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 3000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: 18px;
+    }
+
+    .close {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      color: white;
+      font-size: 42px;
+      cursor: pointer;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #2f5d3a;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.2);
+      display: none;
+      z-index: 4000;
+      font-weight: bold;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .active-page {
+      display: block;
+    }
+
+    #beranda.active-page {
+      display: flex;
+    }
+
+    #statsBeranda.active-page {
+      display: grid;
+    }
+
+    @media (max-width: 1000px) {
+      .product-grid,
+      .features,
+      .testi-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stats,
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid,
+      .calc-box {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      header {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .hero {
+        min-height: 75vh;
+      }
+
+      .product-grid,
+      .features,
+      .testi-grid,
+      .stats,
+      .gallery-grid,
+      .order-form {
+        grid-template-columns: 1fr;
+      }
+
+      .order-form textarea,
+      .order-form button {
+        grid-column: span 1;
+      }
+
+      .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">jangbudi<span>Farm</span></div>
+    <nav>
+      <a href="#" onclick="showpage('beranda')">Beranda</a>
+      <a href="#" onclick="showpage('tentang')">Tentang</a>
+      <a href="#" onclick="showpage('katalog')">Katalog</a>
+      <a href="#" onclick="showpage('hitung')">Hitung Harga</a>
+      <a href="#" onclick="showpage('pesanan')">Pesanan</a>
+      <a href="#" onclick="showpage('kontak')">Kontak</a>
+    </nav>
+  </header>
+
+  <section class="hero page active-page" id="beranda">
+    <div class="hero-content">
+      <h1>Jual Kambing Sehat, Gemuk, dan Siap Kirim</h1>
+      <p>Temukan kambing pilihan untuk aqiqah, qurban, ternak, maupun kebutuhan acara. Pilih kambing, masukkan ke pesanan, lalu kirim order langsung melalui WhatsApp.</p>
+      <div class="hero-buttons">
+        <a href="#" onclick="showpage('katalog')" class="btn">Lihat Katalog</a>
+        <a href="#" onclick="showpage('pesanan')" class="btn btn-light">Cek Pesanan</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats page active-page" id="statsBeranda">
+    <div class="stat-card">
+      <h3 class="counter" data-target="30">0</h3>
+      <p>Kambing Terjual</p>
+    </div>
+    <div class="stat-card">
+      <h3 class="counter" data-target="28">0</h3>
+      <p>Pelanggan Puas</p>
+    </div>
+    <div class="stat-card">
+      <h3 class="counter" data-target="20">0</h3>
+      <p>Stok Kambing</p>
+    </div>
+    <div class="stat-card">
+      <h3 class="counter" data-target="4">0</h3>
+      <p>Jenis Pilihan</p>
+    </div>
+  </div>
+
+  <section class="about page" id="tentang">
+    <div class="section-title">
+      <h2>Tentang jangbudiFarm</h2>
+      <p>Peternakan kambing terpercaya untuk kebutuhan Anda.</p>
+    </div>
+
+    <div class="about-grid">
+      <img src="assets/hero.jpeg" alt="Peternakan kambing" onclick="openModal(this.src)">
+      <div class="about-text">
+        <h3>Kambing Berkualitas dari Peternakan Terawat</h3>
+        <p>jangbudiFarm menyediakan kambing sehat, terawat, dan siap jual. Setiap kambing dipilih berdasarkan kondisi fisik, bobot, umur, serta kebutuhan pelanggan.</p>
+        <p>Website ini dibuat sebagai media interaktif agar calon pembeli bisa melihat katalog, memilih jenis kambing, menghitung estimasi harga, dan mengirim pesanan dengan mudah.</p>
+        <div class="features">
+          <div class="feature-card">
+            <h4>Sehat</h4>
+            <p>Kambing dirawat dan diberi pakan berkualitas.</p>
+          </div>
+          <div class="feature-card">
+            <h4>Harga Jelas</h4>
+            <p>Harga ditampilkan langsung di katalog.</p>
+          </div>
+          <div class="feature-card">
+            <h4>Siap Kirim</h4>
+            <p>Bisa pesan dan konsultasi lewat whatsap.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="catalog page" id="katalog">
+    <div class="section-title">
+      <h2>Katalog Kambing</h2>
+      <p>Pilih kambing sesuai kebutuhan Anda.</p>
+    </div>
+
+    <div class="filter-box">
+      <button class="filter-btn active" onclick="filterProducts('semua', this)">Semua</button>
+      <button class="filter-btn" onclick="filterProducts('qurban', this)">Qurban</button>
+      <button class="filter-btn" onclick="filterProducts('aqiqah', this)">Aqiqah</button>
+      <button class="filter-btn" onclick="filterProducts('ternak', this)">Ternak</button>
+      <button class="filter-btn" onclick="filterProducts('premium', this)">Premium</button>
+    </div>
+
+    <div class="product-grid" id="productGrid"></div>
+  </section>
+
+  <section class="calculator page" id="hitung">
+    <div class="section-title">
+      <h2>Hitung Estimasi Harga</h2>
+      <p>Gunakan kalkulator sederhana untuk memperkirakan biaya pembelian kambing.</p>
+    </div>
+
+    <div class="calc-box">
+      <div>
+        <div class="input-group">
+          <label for="calcType">Jenis Kambing</label>
+          <select id="calcType" onchange="calculateEstimate()">
+            <option value="2500000">Kambing Aqiqah - Rp2.500.000</option>
+            <option value="3200000">Kambing Qurban - Rp3.200.000</option>
+            <option value="4500000">Kambing Premium - Rp4.500.000</option>
+            <option value="1800000">Bibit Ternak - Rp1.800.000</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="calcQty">Jumlah Kambing</label>
+          <input type="number" id="calcQty" min="1" value="1" oninput="calculateEstimate()">
+        </div>
+        <div class="input-group">
+          <label for="deliveryFee">Ongkir / Biaya Kirim</label>
+          <input type="number" id="deliveryFee" min="0" value="100000" oninput="calculateEstimate()">
+        </div>
+      </div>
+
+      <div class="calc-result">
+        <h3>Hasil Estimasi</h3>
+        <p>Harga kambing dan ongkir dapat disesuaikan dengan lokasi pembeli.</p>
+        <div class="total" id="estimateTotal">Rp2.600.000</div>
+        <button class="btn btn-green" onclick="addEstimateToCart()">Tambahkan Estimasi ke Pesanan</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="cart page" id="pesanan">
+    <div class="section-title">
+      <h2>Keranjang Pesanan</h2>
+      <p>Produk yang dipilih akan muncul di sini.</p>
+    </div>
+
+    <div class="cart-box">
+      <div id="cartItems">
+        <p>Belum ada pesanan. Silakan pilih kambing dari katalog.</p>
+      </div>
+      <div class="cart-total" id="cartTotal">Total: Rp0</div>
+
+      <div class="order-form">
+        <input type="text" id="buyerName" placeholder="Nama pembeli" required>
+        <input type="text" id="buyerPhone" placeholder="Nomor HP / WhatsApp" required>
+        <input type="text" id="buyerAddress" placeholder="Alamat pengiriman" required>
+        <input type="date" id="deliveryDate" required>
+        <textarea id="buyerNote" placeholder="Catatan tambahan, contoh: untuk aqiqah, qurban, minta dikirim pagi, dan lain-lain."></textarea>
+        <button class="btn btn-green" onclick="sendWhatsAppOrder()">Kirim Pesanan ke WhatsApp</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery page" id="galeri">
+    <div class="section-title">
+      <h2>Galeri Peternakan</h2>
+      <p>Klik gambar untuk melihat lebih besar.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <img src="assets/3.jpeg" alt="Kambing 1" onclick="openModal(this.src)">
+      <img src="assets/2.jpeg" alt="Kambing 2" onclick="openModal(this.src)">
+      <img src="assets/1.jpeg" alt="Kambing 3" onclick="openModal(this.src)">
+      <img src="https://images.unsplash.com/photo-1596733430284-f7437764b1a9?auto=format&fit=crop&w=800&q=80" alt="Kambing 4" onclick="openModal(this.src)">
+    </div>
+  </section>
+
+  <section class="testimoni page">
+    <div class="section-title">
+      <h2>Testimoni Pelanggan</h2>
+      <p>Beberapa pendapat pelanggan GoatFarm.</p>
+    </div>
+
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <h4>Pak Rudi</h4>
+        <p>Kambingnya sehat dan sesuai foto. Proses pemesanan juga mudah.</p>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <h4>Bu Sari</h4>
+        <p>Saya pesan untuk aqiqah, kambingnya bagus dan pelayanan ramah.</p>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <h4>Mas Andi</h4>
+        <p>Harga jelas, bisa konsultasi dulu, dan pengiriman tepat waktu.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact page" id="kontak">
+    <div class="section-title">
+      <h2>Hubungi Kami</h2>
+      <p>Konsultasi gratis sebelum membeli kambing.</p>
+    </div>
+
+    <div class="contact-box">
+      <p><strong>Nama Usaha:</strong> GoatFarm Indonesia</p>
+      <p><strong>Alamat:</strong> Jl. Peternakan No. 10, Indonesia</p>
+      <p><strong>WhatsApp:</strong> 62819-3355-3963</p>
+      <p><strong>Jam Layanan:</strong> 08.00 - 21.00 WIB</p>
+      <a href="https://wa.me/6281933553963" target="_blank" class="btn">Chat WhatsApp Sekarang</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; copyright 2026</p>
+  </footer>
+
+  <div class="modal" id="imageModal" onclick="closeModal()">
+    <span class="close">&times;</span>
+    <img id="modalImage" src="" alt="Preview Gambar">
+  </div>
+
+  <div class="toast" id="toast">Produk ditambahkan ke pesanan!</div>
+
+  <script>
+    const whatsappNumber = '6281933553963';
+
+    const products = [
+      {
+        id: 1,
+        name: 'Kambing Aqiqah Super',
+        category: 'aqiqah',
+        weight: '22 - 27 kg',
+        age: '8 - 12 bulan',
+        price: 2500000,
+        image: 'https://images.unsplash.com/photo-1524024973431-2ad916746881?auto=format&fit=crop&w=900&q=80',
+        desc: 'Cocok untuk acara aqiqah, sehat, bersih, dan siap kirim.'
+      },
+      {
+        id: 2,
+        name: 'Kambing Qurban Pilihan',
+        category: 'qurban',
+        weight: '30 - 38 kg',
+        age: '1 tahun lebih',
+        price: 3200000,
+        image: 'assets/betina.jpeg',
+        desc: 'Kambing qurban sehat dengan kondisi fisik baik dan layak.'
+      },
+      {
+        id: 3,
+        name: 'Kambing Premium Jumbo',
+        category: 'premium',
+        weight: '40 - 55 kg',
+        age: '1,5 tahun lebih',
+        price: 4500000,
+        image: 'assets/jambrong.jpeg',
+        desc: 'Ukuran besar, cocok untuk qurban premium dan kebutuhan khusus.'
+      },
+      {
+        id: 4,
+        name: 'Bibit Kambing Ternak',
+        category: 'ternak',
+        weight: '18 - 23 kg',
+        age: '6 - 9 bulan',
+        price: 1800000,
+        image: 'assets/moka.jpeg',
+        desc: 'Cocok untuk usaha ternak, sehat, aktif, dan mudah dipelihara.'
+      },
+      {
+        id: 5,
+        name: 'Kambing Qurban Medium',
+        category: 'qurban',
+        weight: '25 - 30 kg',
+        age: '1 tahun lebih',
+        price: 2800000,
+        image: 'assets/bayon.jpeg',
+        desc: 'Pilihan hemat untuk qurban dengan kualitas tetap terjaga.'
+      },
+      {
+        id: 6,
+        name: 'Kambing Aqiqah Hemat',
+        category: 'aqiqah',
+        weight: '18 - 22 kg',
+        age: '7 - 10 bulan',
+        price: 2100000,
+        image: 'assets/munaroh.jpeg',
+        desc: 'Pilihan ekonomis untuk aqiqah dengan kondisi kambing sehat.'
+      }
+    ];
+
+    let cart = [];
+
+    function formatRupiah(number) {
+      return new Intl.NumberFormat('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+        minimumFractionDigits: 0
+      }).format(number);
+    }
+
+    function renderProducts(category = 'semua') {
+      const productGrid = document.getElementById('productGrid');
+      productGrid.innerHTML = '';
+
+      const filteredProducts = category === 'semua'
+        ? products
+        : products.filter(product => product.category === category);
+
+      filteredProducts.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <img src="${product.image}" alt="${product.name}" onclick="openModal('${product.image}')">
+          <div class="product-info">
+            <span class="badge">${product.category.toUpperCase()}</span>
+            <h3>${product.name}</h3>
+            <p><strong>Bobot:</strong> ${product.weight}</p>
+            <p><strong>Umur:</strong> ${product.age}</p>
+            <p>${product.desc}</p>
+            <div class="price">${formatRupiah(product.price)}</div>
+            <button class="btn btn-green" onclick="addToCart(${product.id})">Tambah ke Pesanan</button>
+          </div>
+        `;
+        productGrid.appendChild(card);
+      });
+    }
+
+    function filterProducts(category, button) {
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      renderProducts(category);
+    }
+
+    function addToCart(productId) {
+      const product = products.find(item => item.id === productId);
+      const existing = cart.find(item => item.id === productId);
+
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ ...product, qty: 1 });
+      }
+
+      renderCart();
+      showToast('Kambing berhasil ditambahkan ke pesanan!');
+    }
+
+    function removeFromCart(productId) {
+      cart = cart.filter(item => item.id !== productId);
+      renderCart();
+      showToast('Produk dihapus dari pesanan.');
+    }
+
+    function changeQty(productId, newQty) {
+      const item = cart.find(product => product.id === productId);
+      if (!item) return;
+
+      item.qty = Math.max(1, Number(newQty));
+      renderCart();
+    }
+
+    function renderCart() {
+      const cartItems = document.getElementById('cartItems');
+      const cartTotal = document.getElementById('cartTotal');
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = '<p>Belum ada pesanan. Silakan pilih kambing dari katalog.</p>';
+        cartTotal.textContent = 'Total: Rp0';
+        return;
+      }
+
+      cartItems.innerHTML = '';
+      let total = 0;
+
+      cart.forEach(item => {
+        const subtotal = item.price * item.qty;
+        total += subtotal;
+
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+          <div>
+            <strong>${item.name}</strong><br>
+            <small>${formatRupiah(item.price)} x </small>
+            <input type="number" min="1" value="${item.qty}" style="width:70px; padding:6px;" onchange="changeQty(${item.id}, this.value)">
+          </div>
+          <div>
+            <strong>${formatRupiah(subtotal)}</strong>
+            <button class="remove-btn" onclick="removeFromCart(${item.id})">Hapus</button>
+          </div>
+        `;
+        cartItems.appendChild(div);
+      });
+
+      cartTotal.textContent = 'Total: ' + formatRupiah(total);
+    }
+
+    function calculateEstimate() {
+      const price = Number(document.getElementById('calcType').value);
+      const qty = Number(document.getElementById('calcQty').value) || 1;
+      const deliveryFee = Number(document.getElementById('deliveryFee').value) || 0;
+      const total = (price * qty) + deliveryFee;
+      document.getElementById('estimateTotal').textContent = formatRupiah(total);
+    }
+
+    function addEstimateToCart() {
+      const select = document.getElementById('calcType');
+      const selectedText = select.options[select.selectedIndex].text.split(' - ')[0];
+      const price = Number(select.value);
+      const qty = Number(document.getElementById('calcQty').value) || 1;
+
+      const customId = Date.now();
+      cart.push({
+        id: customId,
+        name: selectedText + ' (Estimasi)',
+        category: 'estimasi',
+        weight: '-',
+        age: '-',
+        price: price,
+        image: '',
+        desc: 'Pesanan dari kalkulator estimasi.',
+        qty: qty
+      });
+
+      renderCart();
+      showToast('Estimasi berhasil dimasukkan ke pesanan!');
+      showpage('pesanan');
+    }
+
+    function sendWhatsAppOrder() {
+      const name = document.getElementById('buyerName').value.trim();
+      const phone = document.getElementById('buyerPhone').value.trim();
+      const address = document.getElementById('buyerAddress').value.trim();
+      const date = document.getElementById('deliveryDate').value;
+      const note = document.getElementById('buyerNote').value.trim();
+
+      if (cart.length === 0) {
+        alert('Keranjang masih kosong. Silakan pilih kambing terlebih dahulu.');
+        return;
+      }
+
+      if (!name || !phone || !address || !date) {
+        alert('Mohon lengkapi nama, nomor HP, alamat, dan tanggal pengiriman.');
+        return;
+      }
+
+      let total = 0;
+      let orderList = '';
+
+      cart.forEach((item, index) => {
+        const subtotal = item.price * item.qty;
+        total += subtotal;
+        orderList += `${index + 1}. ${item.name}%0A   Jumlah: ${item.qty}%0A   Harga: ${formatRupiah(item.price)}%0A   Subtotal: ${formatRupiah(subtotal)}%0A%0A`;
+      });
+
+      const message =
+        `Halo jangbudiFarm, saya ingin pesan kambing.%0A%0A` +
+        `Nama: ${name}%0A` +
+        `No HP: ${phone}%0A` +
+        `Alamat: ${address}%0A` +
+        `Tanggal Kirim: ${date}%0A%0A` +
+        `Daftar Pesanan:%0A${orderList}` +
+        `Total Estimasi: ${formatRupiah(total)}%0A%0A` +
+        `Catatan: ${note || '-'}%0A%0A` +
+        `Mohon konfirmasi ketersediaan stok dan ongkir.`;
+
+      window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+    }
+
+    function openModal(src) {
+      document.getElementById('modalImage').src = src;
+      document.getElementById('imageModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = 'none';
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.style.display = 'block';
+
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 2500);
+    }
+
+    const counters = document.querySelectorAll('.counter');
+    let counterStarted = false;
+
+    function startCounter() {
+      counters.forEach(counter => {
+        const target = Number(counter.dataset.target);
+        let current = 0;
+        const step = Math.ceil(target / 80);
+
+        const interval = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            current = target;
+            clearInterval(interval);
+          }
+          counter.textContent = current;
+        }, 25);
+      });
+    }
+
+    window.addEventListener('scroll', () => {
+      const stats = document.querySelector('.stats');
+      const position = stats.getBoundingClientRect().top;
+
+      if (position < window.innerHeight && !counterStarted) {
+        startCounter();
+        counterStarted = true;
+      }
+    });
+
+    function showpage(pageId) {
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active-page');
+      });
+
+      const selectedPage = document.getElementById(pageId);
+      if (selectedPage) {
+        selectedPage.classList.add('active-page');
+      }
+
+      const statsBeranda = document.getElementById('statsBeranda');
+      if (statsBeranda) {
+        if (pageId === 'beranda') {
+          statsBeranda.classList.add('active-page');
+        } else {
+          statsBeranda.classList.remove('active-page');
+        }
+      }
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    renderProducts();
+    renderCart();
+    calculateEstimate();
+  </script>
+</body>
+</html>
